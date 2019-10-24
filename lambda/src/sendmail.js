@@ -31,18 +31,18 @@ exports.handler = function(event, context, callback) {
       }],
       "subject": "New Website Contact",
       "from": {
-         "email": "website@newmaple.ca",
+         "email": "info@newmaple.ca",
          "name": "New Maple Website"
       },
       "personalizations": [{
          "subject": "New Website Contact",
          "to": [{
-             "email": "stevecomrie@gmail.com"
+             "email": "webmaster@newmaple.ca"
              //"name" : "Sam Smith"
          }]
       }],
       "reply_to": {
-         "email": params.email || 'website@newmaple.ca',
+         "email": params.email || 'info@newmaple.ca',
          //"name": "Sam Smith"
       },
    };
