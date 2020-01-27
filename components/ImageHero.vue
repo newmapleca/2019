@@ -3,7 +3,7 @@
       <div class="gradient"></div>
 
       <div class="image">
-         <img src="/images/bgs/contact.jpg" data-object-fit>
+         <img src="/images/bgs/contact.new.jpg" data-object-fit>
       </div>
 
       <div class="l-container">
