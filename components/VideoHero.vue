@@ -10,7 +10,7 @@
 
       <div class="l-container">
          <div class="c-videohero__overlay">
-            <div class="h1">Cultivating joy, relief and peace in people everywhere</div>
+            <div class="h1">Cultivating joy, comfort and peace in people everywhere</div>
             <button class="is-white" @click="scrollToAbout">Learn More</button>
          </div>
       </div>

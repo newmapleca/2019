@@ -38,7 +38,6 @@ exports.handler = function(event, context, callback) {
          "subject": "New Website Contact",
          "to": [{
              "email": "info@newmaple.ca"
-             //"name" : "Sam Smith"
          }]
       }],
       "reply_to": {
