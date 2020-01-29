@@ -2,8 +2,8 @@
    <section class="c-leadership">
       <div class="l-container">
          <div class="l-carousel">
-            <button @click="prev" class="l-carousel__prev"><span class="arrow-left"></span></button>
-            <button @click="next" class="l-carousel__next"><span class="arrow-right"></span></button>
+            <button @click="prev" class="l-carousel__prev" v-if="showCarousel"><span class="arrow-left"></span></button>
+            <button @click="next" class="l-carousel__next" v-if="showCarousel"><span class="arrow-right"></span></button>
 
             <transition-group name="l-carousel__item" tag="div" class="l-carousel__container">
                <div class="l-carousel__item" v-for="item in items" :key="item.id" :data-id="`${item.id}`" :class="item.moving ? 'transit' : ''">
@@ -51,8 +51,9 @@
    export default {
       data() {
          return {
-            activeBioId: null,
-            items      : []
+            activeBioId : null,
+            items       : [],
+            showCarousel: false,
          }
       },
 
@@ -60,24 +61,40 @@
 
          this.items = this.people;
 
-         // move backwards by 2 so we're starting with the first item
-         this.items.splice(0, 0, this.items.pop() )
-         this.items.splice(0, 0, this.items.pop() )
+         if( this.people.length >= 4 ) {
+            this.showCarousel = true;
 
-         // if we have less than 6 items in the array, double it so we have extras on each side
-         if( this.items.length <= 6 ) {
-            let length = this.items.length;
-            for( let i = 0; i < length; i++ ) {
-               this.items.push({
-                  id      : this.items[i].id + 6,
-                  image   : this.items[i].image,
-                  name    : this.items[i].name,
-                  jobTitle: this.items[i].jobTitle,
-                  bio     : this.items[i].bio,
-                  headshot: this.items[i].headshot,
+            // move backwards by 2 so we're starting with the first item
+            this.items.splice(0, 0, this.items.pop() )
+            this.items.splice(0, 0, this.items.pop() )
+
+            // if we have less than 6 items in the array, double it so we have extras on each side
+            if( this.items.length <= 6 ) {
+               let length = this.items.length;
+               for( let i = 0; i < length; i++ ) {
+                  this.items.push({
+                     id      : this.items[i].id + 6,
+                     image   : this.items[i].image,
+                     name    : this.items[i].name,
+                     jobTitle: this.items[i].jobTitle,
+                     bio     : this.items[i].bio,
+                     headshot: this.items[i].headshot,
+                  })
+               }
+            }
+         } else {
+            for( let i = 0; i < 2; i++ ) {
+               this.items.unshift({
+                  id      : '',
+                  image   : '',
+                  name    : '',
+                  jobTitle: '',
+                  bio     : '',
+                  headshot: '',
                })
             }
          }
+
       },
 
       methods: {
