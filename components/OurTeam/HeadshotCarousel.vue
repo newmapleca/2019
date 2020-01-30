@@ -2,11 +2,11 @@
    <section class="c-leadership">
       <div class="l-container">
          <div class="l-carousel">
-            <button @click="prev" class="l-carousel__prev" v-if="showCarousel"><span class="arrow-left"></span></button>
-            <button @click="next" class="l-carousel__next" v-if="showCarousel"><span class="arrow-right"></span></button>
+            <button @click="prev" class="l-carousel__prev" :class="{ 'l-carousel__prev--show' : showCarousel }"><span class="arrow-left"></span></button>
+            <button @click="next" class="l-carousel__next" :class="{ 'l-carousel__next--show' : showCarousel }"><span class="arrow-right"></span></button>
 
-            <transition-group name="l-carousel__item" tag="div" class="l-carousel__container">
-               <div class="l-carousel__item" v-for="item in items" :key="item.id" :data-id="`${item.id}`" :class="item.moving ? 'transit' : ''">
+            <transition-group name="l-carousel__item" tag="div" class="l-carousel__container" :class="{ 'too-short' : !showCarousel }">
+               <div class="l-carousel__item" v-for="item in items" :key="item.id" :data-id="`${item.id}`" :class="{ 'transit' : item.moving }">
                   <div class="c-headshot" @click.prevent="showBio(item.id)" :class="item.id == activeBioId ? 'is-active' : ''">
                      <div class="c-headshot__image"><img :src="item.headshot ? item.headshot.url : '/images/headshots/blank.jpg'" /></div>
 
@@ -82,17 +82,6 @@
                   })
                }
             }
-         } else {
-            for( let i = 0; i < 2; i++ ) {
-               this.items.unshift({
-                  id      : '',
-                  image   : '',
-                  name    : '',
-                  jobTitle: '',
-                  bio     : '',
-                  headshot: '',
-               })
-            }
          }
 
       },
@@ -114,7 +103,11 @@
             this.items.splice(0, 0, last)
 
             if( this.activeBioId ) {
-               this.activeBioId = this.items[2].id;
+               if( this.people.length >= 4 ) {
+                  this.activeBioId = this.items[2].id;
+               } else {
+                  this.activeBioId = this.items[0].id;
+               }
             }
          },
 
@@ -125,7 +118,11 @@
             this.items.push(first)
 
             if( this.activeBioId ) {
-               this.activeBioId = this.items[2].id;
+               if( this.people.length >= 4 ) {
+                  this.activeBioId = this.items[2].id;
+               } else {
+                  this.activeBioId = this.items[0].id;
+               }
             }
          },
       },
@@ -139,7 +136,7 @@
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 
    .l-carousel {
       position: relative;
@@ -170,6 +167,11 @@
 
          &.l-carousel__prev {
             left     : 0;
+            display: none;
+
+            &.l-carousel__prev--show {
+               display : block;
+            }
 
             @include legacy {
                left: -10px;
@@ -186,6 +188,15 @@
 
          &.l-carousel__next {
             right    : 0;
+            display : none;
+
+            @include mobile {
+               display : block;
+            }
+
+            &.l-carousel__next--show {
+               display : block;
+            }
 
             @include legacy {
                right: -10px;
@@ -218,6 +229,26 @@
       @include tablet {
          min-width: 748px;
          overflow: hidden;
+      }
+
+      &.too-short {
+         .l-carousel__item {
+            &:first-child {
+               margin-left: 0;
+
+               @include tablet {
+                  margin-left: 0;
+               }
+
+               @include mobile {
+                  margin-left: 0;
+               }
+            }
+
+            &.transit {
+               opacity : 1 !important;
+            }
+         }
       }
    }
 
@@ -524,6 +555,15 @@
 
          @include mobile {
             padding-right: 0;
+         }
+
+         a {
+            color: #EB2E22;
+
+            &:hover {
+               color: darken( #EB2E22, 5% );
+               text-decoration : none;
+            }
          }
       }
 
