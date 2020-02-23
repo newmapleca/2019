@@ -80,6 +80,7 @@ export default {
       'nuxt-webfontloader',
       'nuxt-polyfill',
       '~/modules/homepage',
+      '~/modules/content-pages',
    ],
 
    // server: {
@@ -120,6 +121,34 @@ export default {
    webfontloader: {
       google: {
          families: ['Archivo+Black|Lato:400,700,900&display=swap']
+      }
+   },
+
+   /*
+    * extend router for dynamic pages
+    */
+   router: {
+      extendRoutes (routes, resolve) {
+
+         // blog pagination
+         routes.push({
+            path: '/:page',
+            component: resolve(__dirname, 'pages/_page.vue')
+         })
+      }
+   },
+
+   generate: {
+      routes: () => {
+
+         let dynamicRoutes = []
+
+         // pages
+         let rawPages = fs.readFileSync('static/data/pages.json');
+         let allPages = JSON.parse(rawPages);
+             allPages.forEach( function( rec, index ) { dynamicRoutes.push( `/${rec.slug}/`  ) });
+
+         return dynamicRoutes;
       }
    }
 }

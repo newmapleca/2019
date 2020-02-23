@@ -59,7 +59,7 @@
          </section>
 
          <section class="c-legal">
-            Copyright @ {{year}} New Maple Holdings. All rights reserved.
+            Copyright @ {{year}} New Maple Holdings. All rights reserved. <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>, <nuxt-link to="/terms-and-conditions">Terms &amp; Conditions</nuxt-link>.
          </section>
       </div>
    </footer>
@@ -408,6 +408,10 @@
       padding-bottom: 20px;
       font-size     : 16px;
       color         : #BFBFBF;
+
+      a {
+         color : darken( #BFBFBF, 5% );
+      }
 
       @include mobile {
          font-size: 10px;

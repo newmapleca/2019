@@ -27,7 +27,6 @@
    </div>
 </template>
 
-
 <script>
    import { mapState } from "vuex"
    import VideoHero    from '~/components/VideoHero.vue'

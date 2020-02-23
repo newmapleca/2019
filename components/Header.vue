@@ -176,6 +176,10 @@
          let heroHeight = y < 600 ? 600 : y;
 
          window.onscroll = function() {
+            if( document.querySelector('body').classList.contains('always-sticky-menu') ) {
+               return;
+            }
+
             if( window.pageYOffset >= ( heroHeight - 120 ) ) {
 
                document.querySelector('body').classList.add('has-sticky-menu');
