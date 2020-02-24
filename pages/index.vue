@@ -3,7 +3,7 @@
       <div class="l-body">
          <main class="l-main">
 
-            <VideoHero></VideoHero>
+            <VideoHero :content="content"></VideoHero>
             <div class="l-content">
                <div class="anchor"><a name="about" id="about"> </a></div>
                <IntroText v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }" data-waypoint="about" :content="content"></IntroText>

@@ -34,6 +34,7 @@ module.exports = function fetchData() {
                query: `{
                     homepage {
                       id
+                      videoOverlayText
                       aboutText
                       leadershipTeam {
                         id
