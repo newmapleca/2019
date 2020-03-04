@@ -63,8 +63,7 @@
                <div>
                   <div class="logo"><img src="/images/logo-color.png" alt="New Maple Logo" srcset="/images/logo-color@2x.png 2x"></div>
 
-                  <h3>General Inquiries</h3>
-                  <p><a href="mailto:info@newmaple.ca">info@newmaple.ca</a></p>
+                  <div v-html="content.rightSideContent"></div>
                </div>
 
                <div class="logo-mark"></div>
@@ -164,7 +163,11 @@
                )
                .join("&");
          }
-      }
+      },
+
+      props: [
+         "content"
+      ]
    }
 </script>
 

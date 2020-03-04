@@ -3,12 +3,12 @@
       <div class="gradient"></div>
 
       <div class="image">
-         <img src="/images/bgs/contact.cropped.jpg" data-object-fit>
+         <img :src="content.headerBackgroundImage.url" data-object-fit>
       </div>
 
       <div class="l-container">
          <div class="c-imagehero__overlay">
-            <div class="h1">Have questions about the cannabis world?</div>
+            <div class="h1">{{content.imageOverlayText}}</div>
          </div>
       </div>
    </section>
@@ -27,7 +27,9 @@
 
       },
 
-      props: [],
+      props: [
+         "content"
+      ]
    }
 </script>
 

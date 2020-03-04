@@ -82,6 +82,7 @@ export default {
       'nuxt-webfontloader',
       'nuxt-polyfill',
       '~/modules/homepage',
+      '~/modules/contact-us',
       '~/modules/content-pages',
    ],
 
