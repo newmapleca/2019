@@ -18,10 +18,10 @@
 
                <div class="c-footer__social">
                   <ul class="h-horizontal">
-                     <li><a href="https://www.facebook.com/nmhcanada/" target="_blank"><img src="/images/icons/facebook.svg"></a></li>
-                     <li><a href="https://www.instagram.com/_newmaple/" target="_blank"><img src="/images/icons/instagram.svg"></a></li>
-                     <li><a href="https://twitter.com/_newmaple" target="_blank"><img src="/images/icons/twitter.svg"></a></li>
-                     <li><a href="https://www.linkedin.com/company/new-maple/" target="_blank"><img src="/images/icons/linkedin.svg"></a></li>
+                     <li v-if="socialContent.facebookUrl" ><a :href="socialContent.facebookUrl"  target="_blank"><img src="/images/icons/facebook.svg"></a></li>
+                     <li v-if="socialContent.instagramUrl"><a :href="socialContent.instagramUrl" target="_blank"><img src="/images/icons/instagram.svg"></a></li>
+                     <li v-if="socialContent.twitterUrl"  ><a :href="socialContent.twitterUrl"   target="_blank"><img src="/images/icons/twitter.svg"></a></li>
+                     <li v-if="socialContent.linkedinUrl" ><a :href="socialContent.linkedinUrl"  target="_blank"><img src="/images/icons/linkedin.svg"></a></li>
                   </ul>
                </div>
             </div>
@@ -82,9 +82,11 @@
          }
       },
 
+      props: [
+         "socialContent"
+      ],
+
       methods : {
-
-
          smoothScroll(tab) {
             let element = document.querySelector(tab);
             if( element ) {

@@ -36,6 +36,10 @@ module.exports = function fetchData() {
                      id
                      imageOverlayText
                      rightSideContent
+                     instagramUrl
+                     linkedinUrl
+                     twitterUrl
+                     facebookUrl
                      headerBackgroundImage {
                         url
                         alt

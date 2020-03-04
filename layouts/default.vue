@@ -1,8 +1,8 @@
 <template>
    <div id="top">
-      <Header></Header>
+      <Header :socialContent="socialContent"></Header>
       <nuxt />
-      <Footer></Footer>
+      <Footer :socialContent="socialContent"></Footer>
    </div>
 </template>
 
@@ -13,6 +13,14 @@
 
    export default {
       transition: "default",
+
+      data: () => ({
+         socialContent : {}
+      }),
+
+      created () {
+         this.socialContent = require('~/static/data/contactus.json')
+      },
 
       components: {
          Header, Footer

@@ -30,10 +30,10 @@
                      </li>
                      <li :class="activeNavItem == 'contact' ? 'is-active is-active--always' : ''"><nuxt-link to="/contact">Contact Us</nuxt-link></li>
                      <li class="is-social">
-                        <a href="https://www.facebook.com/nmhcanada/" target="_blank"><img src="/images/icons/facebook-white.svg"></a>
-                        <a href="https://www.instagram.com/_newmaple/" target="_blank"><img src="/images/icons/instagram-white.svg"></a>
-                        <a href="https://twitter.com/_newmaple" target="_blank"><img src="/images/icons/twitter-white.svg"></a>
-                        <a href="https://www.linkedin.com/company/new-maple/" target="_blank"><img src="/images/icons/linkedin-white.svg"></a>
+                        <a v-if="socialContent.facebookUrl"  :href="socialContent.facebookUrl"  target="_blank"><img src="/images/icons/facebook-white.svg"></a>
+                        <a v-if="socialContent.instagramUrl" :href="socialContent.instagramUrl" target="_blank"><img src="/images/icons/instagram-white.svg"></a>
+                        <a v-if="socialContent.twitterUrl"   :href="socialContent.twitterUrl"   target="_blank"><img src="/images/icons/twitter-white.svg"></a>
+                        <a v-if="socialContent.linkedinUrl"  :href="socialContent.linkedinUrl"  target="_blank"><img src="/images/icons/linkedin-white.svg"></a>
                      </li>
                   </ul>
                   <a href="#" class="c-menu-toggle" @click.prevent="toggleMenu" :class="mobileMenuOpen ? 'c-menu-toggle--active' : ''">
@@ -74,10 +74,10 @@
                   </li>
                   <li><nuxt-link to="/contact" @click.native="toggleMenu( 'off' );">Contact Us</nuxt-link></li>
                   <li class="is-social">
-                     <a href="#"><img src="/images/icons/facebook-white.svg"></a>
-                     <a href="#"><img src="/images/icons/twitter-white.svg"></a>
-                     <a href="#"><img src="/images/icons/linkedin-white.svg"></a>
-                     <a href="https://www.instagram.com/_newmaple/" target="_blank"><img src="/images/icons/instagram-white.svg"></a>
+                     <a v-if="socialContent.facebookUrl"  :href="socialContent.facebookUrl"  target="_blank"><img src="/images/icons/facebook-white.svg"></a>
+                     <a v-if="socialContent.instagramUrl" :href="socialContent.instagramUrl" target="_blank"><img src="/images/icons/instagram-white.svg"></a>
+                     <a v-if="socialContent.twitterUrl"   :href="socialContent.twitterUrl"   target="_blank"><img src="/images/icons/twitter-white.svg"></a>
+                     <a v-if="socialContent.linkedinUrl"  :href="socialContent.linkedinUrl"  target="_blank"><img src="/images/icons/linkedin-white.svg"></a>
                   </li>
                </ul>
             </div>
@@ -97,6 +97,10 @@
             mobileMenuTeamOpen     : false
          }
       },
+
+      props: [
+         "socialContent"
+      ],
 
       methods : {
          showSub( section ) {
