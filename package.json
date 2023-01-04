@@ -25,7 +25,7 @@
     "netlify-lambda": "^1.6.3",
     "node-fetch": "^2.6.0",
     "normalize-scss": "^7.0.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-polyfill": "^1.0.3",
     "nuxt-webfontloader": "^1.1.0",
     "object-fit-videos": "^1.0.4",
